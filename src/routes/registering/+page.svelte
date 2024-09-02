@@ -20,7 +20,7 @@ function handleSubmit(event) {
     };
 }
 </script>      
-<div class = "reg"
+<div class = "reg">
 <form method="POST" action="//create" on:submit={handleSubmit}>
 <label>
     Name:
@@ -48,3 +48,4 @@ function handleSubmit(event) {
 <br />
 <button type="submit">Register</button>
 </form>
+</div>

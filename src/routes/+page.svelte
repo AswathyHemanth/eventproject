@@ -1,3 +1,9 @@
+<div>
+    <div class = "headerclass">
+            <p> lets see an event</p>
+    </div>
+</div>
+
 <div class = "bigblock">
     <div class = "event">
 <div class="event1">
@@ -7,13 +13,13 @@
 </div>
 
 <div class="event2">
-    <h1>Event at Asiantown</h1>
+    <h1>Event at Qatar Mall</h1>
     <button class = "booknow2"> BOOK NOW </button>
 
 </div>
 
 <div class="event3">
-    <h1>Event at Asiantown</h1>
+    <h1>Event at Any event</h1>
     <button class = "booknow3"> BOOK NOW </button>
 
 </div>
@@ -74,5 +80,13 @@
 
     
  }
+.header{
+    padding: 60px;
+    text-align: center;
+    background: red;
+    color :rgb(91, 129, 231);
+    font-size :30px;
+
+}
 
 </style>
