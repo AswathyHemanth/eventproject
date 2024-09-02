@@ -1,51 +1,63 @@
-<script>
+<script lang="ts">
+export let data;
+export let form;
+import { zod } from 'sveltekit-superforms/adapters';
+import{userFormSchema} from "$lib/forms/schema/user-schema.js";
+import {superForm} from "sveltekit-superforms/client";
+import  SuperDebug from "sveltekit-superforms/client/SuperDebug.svelte";
 
-let formData = {
-    name: '',
-    email: '',
-    mobile: '',
-    password: '',
-    confirm_password:'',
+const {form:registrationForm, errors, enhance } = superForm(data.userForm,
 
-};
-
-
-function handleSubmit(event) {
-    event.preventDefault();
-
-    formData = {
-        name: '',
-        email: '',
-        password: ''
-    };
+{
+    validators: zod(userFormSchema)
 }
-</script>      
-<div class = "reg">
-<form method="POST" action="//create" on:submit={handleSubmit}>
-<label>
-    Name:
-    <input type="text" bind:value={formData.name} required />
-</label>
-<br />
-<label>
-    Email:
-    <input type="email" bind:value={formData.email} required />
-</label>
-<br /><label>
-    Mobile:
-    <input type="mobile" bind:value={formData.mobile} required />
-</label>
-<br />
-<label>
-    Password:
-    <input type="password" bind:value={formData.password} required />
-</label>
-<br />
-<label>
-    Confirm Password:
-    <input type="confirm_password" bind:value={formData.confirm_password} required />
-</label>
-<br />
-<button type="submit">Register</button>
-</form>
-</div>
+
+
+);
+</script>
+<SuperDebug data={$registrationForm}></SuperDebug>
+    <form class="page-container-bottom" action="?/create" method="POST">
+        <!--<SuperDebug data={$registrationForm}></SuperDebug>-->
+        <div class="required-block">
+            
+            <div><span class="require">*</span> Required</div>
+        </div>
+
+        <div class="text-field-block">
+            <div class="label">Your Full name</div>
+            <div class="text-field"> <input 
+                name="name" type="text" placeholder="Enter Your Full Name" bind:value={$registrationForm.name}></div>
+
+
+        </div>
+
+        <div class="text-field-block">
+            <div class="label">Email</div>
+           
+            <div class="text-field"> <input name="email" type="text" placeholder="Enter email" bind:value={$registrationForm.email} ></div>
+
+        </div>
+
+        <div class="text-field-block">
+            <div class="label">Mobile</div>
+            <div class="text-field"> <input name="mobile" type="text" placeholder="Enter Your Full Name" bind:value={$registrationForm.mobile}></div>
+
+            </div>
+            <div class="text-field-block">
+                <div class="label">Password</div>
+                <div class="text-field"> <input name="password" type="text" placeholder="Enter Your Full Name" bind:value={$registrationForm.password}></div>
+    
+                </div>
+                <div class="text-field-block">
+                    <div class="label">ConfirmPassword</div>
+                    <div class="text-field"> <input name="confirmpassword" type="text" placeholder="Enter Your Full Name" bind:value={$registrationForm.confirmpassword}></div>
+        
+                    </div>
+
+
+        <div class= "btn_container_block">
+            <button class="register-button" >Register
+            </button>
+
+        </div>
+    </form>
