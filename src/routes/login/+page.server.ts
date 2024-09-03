@@ -1,4 +1,5 @@
-
+import { redirect } from '@sveltejs/kit';
+import { eq, and, sql } from 'drizzle-orm';
 import { db } from "$lib/server/db/connect.server";
 import { userDataTable } from '$lib/server/db/schema';
 import type { Actions } from './$types';
@@ -25,13 +26,17 @@ export const actions = {
             return fail(400, { form });
         }   
         else if(form.valid){
-           /*await db.find(userDataTable).values({
-               username:form.data.username,
-               password:form.data.password
-                ...form.data,        
-            });*/
-            return {status:"success", message:"Form Submission successfull"}
-            console.log(form);
+
+
+            const result =   await db.select().from(userDataTable).where(sql`email = ${form.data.email} and password = ${form.data.password}`);   
+            console.log(result[0]);
+            if(result.length>0){
+                throw redirect(302, '/dashboard');
+            }
+            else{
+                return {status:"success", message:"No username or password"}
+
+            }
         }      
 		
 	}
