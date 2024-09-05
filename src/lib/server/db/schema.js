@@ -6,6 +6,16 @@ export const userDataTable = mysqlTable('user_registeration', {
 	email: varchar('email', { length: 255 }).notNull(),
 	mobile: varchar('mobile', { length: 20 }).notNull(),
 	password: varchar('password', { length: 255 }),
-	confirmpassword: varchar('confirmpassword', { length: 255 }),
+	createdAt: timestamp('created_at').defaultNow().notNull()
+});
+
+export const eventTable = mysqlTable('events_table', {
+	id: int('id').primaryKey().autoincrement(),
+	userid:varchar('userid', { length: 255 }),
+	img:varchar('img', { length: 255 }),
+	ename: varchar('name', { length: 255 }).notNull(),
+	time: varchar('time', { length: 255 }).notNull(),
+	location: varchar('location', { length: 20 }).notNull(),
+	description: varchar('description', { length: 20 }).notNull(),
 	createdAt: timestamp('created_at').defaultNow().notNull()
 });

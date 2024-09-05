@@ -17,7 +17,7 @@ export const load = async () => {
 
 
 export const actions = {
-	login: async ({request}) => {
+	login: async ({request,cookies}) => {
         console.log(request);
         const form = await superValidate(request, zod(loginSchema));
         console.log("form data",form);
@@ -29,8 +29,13 @@ export const actions = {
 
 
             const result =   await db.select().from(userDataTable).where(sql`email = ${form.data.email} and password = ${form.data.password}`);   
-            console.log(result[0]);
+            console.log("RESULT",result[0]);
+
+
             if(result.length>0){
+
+                const token = btoa(JSON.stringify(result[0]));
+                cookies.set('userdata', token, { path: '/' });
                 throw redirect(302, '/dashboard');
             }
             else{
