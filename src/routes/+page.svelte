@@ -1,92 +1,72 @@
-<div>
-    <div class = "headerclass">
-            <p> lets see an event</p>
-    </div>
+<h1> WELCOME</h1>
+
+<script>
+	import { page } from "$app/stores";
+
+var eventList=[ 
+   
+       {img:"aladdin.webp",ename:"Aladdin",time:"7:pm",location:"Al Janoub",description:"ghjgvjhvghj"},
+       {img:"daypassatresort.webp", ename:"Little shop of horrors",time:"10:pm",location:"THIS Theatre",description:"ghjgvjhvghj"},
+       {img:"littleshopofhorrors.webp",ename:"Day pass at Majlies Resort",time:"10 am onwards",location:"Sealine",description:"ghjgvjhvghj"},
+       {img:"formula1.webp",ename:"FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2024",time:"10 am onwards",location:" LUSAIL INTERNATIONAL CIRCUIT",description:"ghjgvjhvghj"},
+       {img:"youasked.webp",ename:"YOu asked",time:"7:pm",location:"ggghgchc",description:"ghjgvjhvghj"},
+       {img:"kidspartyorganisers.webp",ename:"party organiser",time:"7:pm",location:"Al Janoub",description:"ghjgvjhvghj"},
+       
+      ];
+function register(){
+    location.assign("/registering");
+}
+function signin(){
+    location.assign("/login");
+}
+    </script>
+
+   
+<h1> ALL EVENTS </h1>
+<div class="welcomebox">
+
+<button on:click={register}> Register</button>
+<button on:click={signin}> Sign In</button>
+</div>
+<div class ="boxcontainer">
+{#each eventList as list,listIndex}
+
+<div class="eventbox">
+   <div > <img src="/images/{list.img}"></div>
+   <div>{list.ename}</div>
+   <div>{list.location}</div>
+   <div>{list.description}</div>
+   
 </div>
 
-<div class = "bigblock">
-    <div class = "event">
-<div class="event1">
-    <h1>Event at Asiantown</h1>
-    <button class = "booknow1"> BOOK NOW </button>
 
+{/each}
 </div>
-
-<div class="event2">
-    <h1>Event at Qatar Mall</h1>
-    <button class = "booknow2"> BOOK NOW </button>
-
-</div>
-
-<div class="event3">
-    <h1>Event at Any event</h1>
-    <button class = "booknow3"> BOOK NOW </button>
-
-</div>
-<div class="event4">
-    <h1>Event at Asiantown</h1>
-    <button class = "booknow4"> BOOK NOW </button>
-
-</div>
-</div>
-</div>
-
 <style>
 
-.bigblock{
-    background-color: black;
-}
- .event1{
-    height : 300px;
-    width : 300px;
-    border : 5px;
-    display : inline-block;
-    background-color : #e5e5fa;
-    flex : 1px;
-    
- }
- .event2{
-    height : 300px;
-    width : 300px;
-    border : 10px;
-    display : inline-block;
-    background-color : #e5e5fa;
-    flex : 1px;
-    
- }
- .event3{
-    height : 300px;
-    width : 300px;
-    border : 5px;
-    display : inline-block;
-    background-color : #e5e5fa;
-    flex : 1px;
-    
-    
- }
- .event4{
-    height : 300px;
-    width : 300px;
-    border : 5px;
-    display : inline-block;
-    background-color : #e5e5fa;
-    flex : 1px;
-    
+.eventbox{
+
+    width:250px;
+    height:200px;
+    border:3px solid black;
+ 
  }
 
- .booknow1{
-         background-color: rgb(91, 129, 231);
-         flex: 1px;
-
+.boxcontainer{
+    display:flex;
+    column-gap: 20px;
+    justify-content: center;
+ 
     
  }
-.header{
-    padding: 60px;
-    text-align: center;
-    background: red;
-    color :rgb(91, 129, 231);
-    font-size :30px;
+ .eventbox img{
+   width:100%;
 
 }
-
+.welcomebox{
+   display:flex;
+   justify-content: space-between;
+   height: 100px;
+   align-items: center;
+}
 </style>
